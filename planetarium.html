@@ -1,0 +1,99 @@
+
+<html>
+
+<head>
+  <title>Planetarium</title>
+
+  <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script src="http://processingjs.org/content/download/processing-js-1.3.6/processing-1.3.6.js"></script>
+  <script src="https://raw.github.com/jashkenas/coffee-script/master/extras/coffee-script.js"></script>
+
+  <link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+
+
+  <script type="text/javascript" src="lib/sliderjs/slider.js"></script>
+  <link href="lib/sliderjs/slider.min.css" rel="stylesheet" type="text/css" />
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="info">
+      <header>
+        <h1>Planetarium</h1>
+        <div class="subheading">An alternative game portfolio</div>
+      </header>
+
+      <div id="shadow" class="box">
+        <div id="canvas-container" style="display: none;"></div>
+        <div id="planet-info" style="display: none;">
+          <ul>
+            <li>Click on a planet to get information</li>
+            <li>Drag to move around</li>
+            <li>Use mousewheel to zoom</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="game-info" style="display: none;">
+        <div id="images"><div id="slider"></div></div>
+
+        <div id="info-content">
+          <article id="content">
+            <h2>About</h2>
+            <p id="game-description">Hello world!</p>
+          </article>
+        </div>
+      </div>
+  </div>
+
+    <script type="text/javascript">
+    window.sketch = function (func) {
+      var canvas = document.createElement('canvas');
+      canvas.id = 'canvas';
+      
+      $('#canvas-container').append(canvas);
+      new Processing(canvas, function (processing) { func.call(processing); });
+
+      $('#canvas-container').fadeIn("slow");
+      $('#shadow').bind("mouseenter", function() { $('#planet-info').show("fast"); });
+      $('#shadow').bind("mouseleave", function() { $('#planet-info').hide("fast"); });
+    }
+  </script>
+
+  <script src="lib/planets/tree.js"></script>
+  <script src="lib/planets/planet.js"></script>
+  <script src="lib/planets/grass.js"></script>
+  <script src="lib/planets/bush.js"></script>
+  <script src="lib/planets/cloud.js"></script>
+  <script src="lib/planets/starfield.js"></script>
+  <script src="lib/planets/text_utils.js"></script>
+  <script src="lib/planets/planetarium.js"></script>
+
+  <script type="text/javascript">
+  $(function(){
+    var slider = new Slider("#slider").setDuration(3000);
+    slider.setSize(500, 400);
+    slider.setTheme('theme-light');
+
+    var transitions = ['squares', 'circles', 'circle', 'diamond', 'verticalSunblind', 'verticalOpen', 'clock', 'transition-flip', 'transition-left', 'transition-zoomout']
+    setInterval(function(){
+      var transition = transitions[Math.floor(Math.random()*transitions.length)];
+      if(SliderTransitionFunctions[transition])
+        slider.setTransitionFunction(SliderTransitionFunctions[transition])
+      else slider.setTransition(transition);
+    }, 5555);
+
+    slider.setPhotos([ 
+      { "src" : "data/images/wikiadventure/ingame.jpg", "name": "WikiAdventure ingame" }, 
+      { "src" : "data/images/wikiadventure/WA_Ingame.jpg", "name": "WikiAdventure ingame" }, 
+      { "src" : "data/images/wikiadventure/WA_Loading.jpg", "name": "WikiAdventure loading screen" }
+    ]);
+
+  });
+  </script>
+</body>
+
+</html>
