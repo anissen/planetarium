@@ -22,13 +22,30 @@ sketch ->
     @starfield = new Starfield(@, 2000, 1000, 1000)
     
     @planets = []
-    @planets.push(new Planet(@, 150, 150, 80, @PI/400, "WikiAdventure", "Wiki-based game framework<br\/><br\/>An experimental adventure game framework based on the Wiki principles, where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games."))
-    bigPlanet = new Planet(@, 400, 300, 200, @PI/1200, "Rigid Body Workbench")
+    #@planets.push(new Planet(@, 150, 150, 80, @PI/400, "WikiAdventure", "Wiki-based game framework<br\/><br\/>An experimental adventure game framework based on the Wiki principles, where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games."))
+    #bigPlanet = new Planet(@, 400, 300, 200, @PI/1200, "Rigid Body Workbench")
 
-    @planets.push(bigPlanet)
-    @planets.push(new Planet(@, 800, 200, 150, @PI/1800, "This is an awesome planet"))
+    for i in [0..21]
+      @planets.push @createNewRandomPlanet(@planets, i)
+    #@planets.push(new Planet(@, 800, 200, 150, @PI/1800, "This is an awesome planet"))
 
     @setupMouseWheel()
+
+  @createNewRandomPlanet = (planets, index) ->
+    r = @random(@TWO_PI)
+    size = 50 + @random(150)
+    halfsize = size / 2
+    x = @cos(r) * @random(1000 - halfsize)
+    y = @sin(r) * @random(1000 - halfsize)
+    minDistBetweenPlanets = 70
+
+    for p in planets
+      if @dist(x, y, p.x, p.y) < (halfsize + (p.size / 2) + minDistBetweenPlanets)
+        return @createNewRandomPlanet(planets, index)
+
+    rotationSpeed = @PI / (500 + @random(1500))
+    name = "Planet #" + index
+    new Planet(@, x, y, size, rotationSpeed, name)
 
   @setupMouseWheel = =>
     me = this

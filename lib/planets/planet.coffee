@@ -20,7 +20,7 @@ class Planet
     @objects.clear()
 
   teraform: ->
-    @addRandomObject() for i in [1..8]
+    @addRandomObject() for i in [1..4]
     @teraformed = true
 
   addRandomObject: ->
@@ -30,7 +30,7 @@ class Planet
       @addObject(new Grass(@pjs, @, @pjs.random(@pjs.TWO_PI) - @a, 0.02 + @pjs.random(0.1)))
     if @pjs.random(1.0) < 0.2
       @addCloud(new Cloud(@pjs, @, @pjs.random(@pjs.TWO_PI) - @a, 0.1 + @pjs.random(0.4)))
-    if @pjs.random(1.0) < 0.5
+    if @pjs.random(1.0) < 0.2
       @addObject(new Bush(@pjs, @, @pjs.random(@pjs.TWO_PI) - @a, 0.1 + @pjs.random(0.4)))
 
   draw: ->
