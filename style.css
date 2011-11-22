@@ -102,3 +102,7 @@ li {
   -moz-border-radius: 5px;
   border-radius: 5px; 
 }
+
+.short-desc {
+  font-style: italic;
+}

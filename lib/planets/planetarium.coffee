@@ -25,13 +25,15 @@ sketch ->
     #@planets.push(new Planet(@, 150, 150, 80, @PI/400, "WikiAdventure", "Wiki-based game framework<br\/><br\/>An experimental adventure game framework based on the Wiki principles, where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games."))
     #bigPlanet = new Planet(@, 400, 300, 200, @PI/1200, "Rigid Body Workbench")
 
-    for i in [0..21]
-      @planets.push @createNewRandomPlanet(@planets, i)
+    for game in games.projects.project
+      @planets.push @createNewRandomPlanet(@planets, game)
+
+      
     #@planets.push(new Planet(@, 800, 200, 150, @PI/1800, "This is an awesome planet"))
 
     @setupMouseWheel()
 
-  @createNewRandomPlanet = (planets, index) ->
+  @createNewRandomPlanet = (planets, game) ->
     r = @random(@TWO_PI)
     size = 50 + @random(150)
     halfsize = size / 2
@@ -41,11 +43,12 @@ sketch ->
 
     for p in planets
       if @dist(x, y, p.x, p.y) < (halfsize + (p.size / 2) + minDistBetweenPlanets)
-        return @createNewRandomPlanet(planets, index)
+        return @createNewRandomPlanet(planets, game)
 
     rotationSpeed = @PI / (500 + @random(1500))
-    name = "Planet #" + index
-    new Planet(@, x, y, size, rotationSpeed, name)
+    name = game.name
+
+    new Planet(@, x, y, size, rotationSpeed, name, game)
 
   @setupMouseWheel = =>
     me = this
@@ -103,7 +106,14 @@ sketch ->
         @zoomedPlanet = p
         @zoom = true
         @zoomCount = 0
-        $('#game-description').html(p.text)
+        info = p.gameinfo
+        $('#title').html(info.name)
+        $('#year').html(info.year)
+        $('#short-description').html(info.description.short)
+        $('#long-description').html(info.description.long)
+        console.log info.resources
+        if info.resources.pictures? and info.resources.pictures.picture?
+          slider.setPhotos(info.resources.pictures.picture);
         break
 
   @mouseOut = =>

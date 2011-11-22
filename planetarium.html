@@ -43,24 +43,27 @@
         <div id="info-content">
           <article id="content">
             <h2>About</h2>
-            <p id="game-description">Hello world!</p>
+            <b><span id="title"></span> (<span id="year"></span>)</b>
+            <div id="short-description" class="short-desc"></div>
+            <p id="long-description"></p>
           </article>
         </div>
       </div>
   </div>
 
-    <script type="text/javascript">
-    window.sketch = function (func) {
-      var canvas = document.createElement('canvas');
-      canvas.id = 'canvas';
-      
-      $('#canvas-container').append(canvas);
-      new Processing(canvas, function (processing) { func.call(processing); });
+  <script type="text/javascript">
+  window.sketch = function (func) {
+    var canvas = document.createElement('canvas');
+    canvas.id = 'canvas';
+    
+    $('#canvas-container').append(canvas);
+    new Processing(canvas, function (processing) { func.call(processing); });
 
-      $('#canvas-container').fadeIn("slow");
-      $('#shadow').bind("mouseenter", function() { $('#planet-info').show("fast"); });
-      $('#shadow').bind("mouseleave", function() { $('#planet-info').hide("fast"); });
-    }
+    $('#canvas-container').fadeIn("slow");
+    $('#shadow').bind("mouseenter", function() { $('#planet-info').show("fast"); });
+    $('#shadow').bind("mouseleave", function() { $('#planet-info').hide("fast"); });
+  }
+  var slider = null;
   </script>
 
   <script src="lib/planets/tree.js"></script>
@@ -70,28 +73,19 @@
   <script src="lib/planets/cloud.js"></script>
   <script src="lib/planets/starfield.js"></script>
   <script src="lib/planets/text_utils.js"></script>
+  <script src="lib/planets/game_data.js"></script>
   <script src="lib/planets/planetarium.js"></script>
 
   <script type="text/javascript">
   $(function(){
-    var slider = new Slider("#slider").setDuration(3000);
+    slider = new Slider("#slider").setDuration(7000);
     slider.setSize(500, 400);
     slider.setTheme('theme-light');
-
-    var transitions = ['squares', 'circles', 'circle', 'diamond', 'verticalSunblind', 'verticalOpen', 'clock', 'transition-flip', 'transition-left', 'transition-zoomout']
-    setInterval(function(){
-      var transition = transitions[Math.floor(Math.random()*transitions.length)];
-      if(SliderTransitionFunctions[transition])
-        slider.setTransitionFunction(SliderTransitionFunctions[transition])
-      else slider.setTransition(transition);
-    }, 5555);
-
-    slider.setPhotos([ 
-      { "src" : "data/images/wikiadventure/ingame.jpg", "name": "WikiAdventure ingame" }, 
-      { "src" : "data/images/wikiadventure/WA_Ingame.jpg", "name": "WikiAdventure ingame" }, 
-      { "src" : "data/images/wikiadventure/WA_Loading.jpg", "name": "WikiAdventure loading screen" }
-    ]);
-
+    
+    var transition = 'circles';
+    if(SliderTransitionFunctions[transition])
+      slider.setTransitionFunction(SliderTransitionFunctions[transition])
+    else slider.setTransition(transition);
   });
   </script>
 </body>

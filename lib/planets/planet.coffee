@@ -1,5 +1,5 @@
 class Planet
-  constructor: (@pjs, @x, @y, @size, @turnSpeed, @name = "hej", @text = "blah") ->
+  constructor: (@pjs, @x, @y, @size, @turnSpeed, @name = "hej", @gameinfo) ->
     @a = 0.0
     @objects = []
     @clouds = []
