@@ -22,14 +22,9 @@ sketch ->
     @starfield = new Starfield(@, 2000, 1000, 1000)
     
     @planets = []
-    #@planets.push(new Planet(@, 150, 150, 80, @PI/400, "WikiAdventure", "Wiki-based game framework<br\/><br\/>An experimental adventure game framework based on the Wiki principles, where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games."))
-    #bigPlanet = new Planet(@, 400, 300, 200, @PI/1200, "Rigid Body Workbench")
 
     for game in games.projects.project
       @planets.push @createNewRandomPlanet(@planets, game)
-
-      
-    #@planets.push(new Planet(@, 800, 200, 150, @PI/1800, "This is an awesome planet"))
 
     @setupMouseWheel()
 
@@ -111,9 +106,10 @@ sketch ->
         $('#year').html(info.year)
         $('#short-description').html(info.description.short)
         $('#long-description').html(info.description.long)
-        console.log info.resources
+
         if info.resources.pictures? and info.resources.pictures.picture?
-          slider.setPhotos(info.resources.pictures.picture);
+          slider.setPhotos(info.resources.pictures.picture)
+          slider.slide(0)
         break
 
   @mouseOut = =>
