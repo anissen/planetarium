@@ -19,7 +19,7 @@ arcText = (text, planet) ->
   context.fillStyle = 'black'
   #context.font = "bold 32px 'Inconsolata'"
   #context.font = "bold 48px 'Tangerine'"
-  context.font = "32px 'Love Ya Like A Sister'"
+  context.font = "bold 32px 'Love Ya Like A Sister'"
   #context.shadowOffsetX = 1
   #context.shadowOffsetY = 1
   #context.shadowBlur    = 0
@@ -30,7 +30,7 @@ arcText = (text, planet) ->
   centerX = planet.x
   centerY = planet.y
   radius = (planet.size / 2) + 75
-  angle = Math.min(Math.PI / 2 + (text.length / 10), Math.PI * 2)
+  angle = Math.min((Math.PI / 8) + (text.length / 8), Math.PI * 1.5)
 
   drawTextAlongArc(context, text, centerX, centerY, radius, angle, 0)
 

@@ -22,16 +22,13 @@ sketch ->
     @starfield = new Starfield(@, 2000, 1000, 1000)
     
     @planets = []
-    #@planets.push(new Planet(@, 150, 150, 80, @PI/400, "WikiAdventure", "Wiki-based game framework<br\/><br\/>An experimental adventure game framework based on the Wiki principles, where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games."))
-    #bigPlanet = new Planet(@, 400, 300, 200, @PI/1200, "Rigid Body Workbench")
 
-    for i in [0..21]
-      @planets.push @createNewRandomPlanet(@planets, i)
-    #@planets.push(new Planet(@, 800, 200, 150, @PI/1800, "This is an awesome planet"))
+    for game in games.projects.project
+      @planets.push @createNewRandomPlanet(@planets, game)
 
     @setupMouseWheel()
 
-  @createNewRandomPlanet = (planets, index) ->
+  @createNewRandomPlanet = (planets, game) ->
     r = @random(@TWO_PI)
     size = 50 + @random(150)
     halfsize = size / 2
@@ -41,11 +38,12 @@ sketch ->
 
     for p in planets
       if @dist(x, y, p.x, p.y) < (halfsize + (p.size / 2) + minDistBetweenPlanets)
-        return @createNewRandomPlanet(planets, index)
+        return @createNewRandomPlanet(planets, game)
 
     rotationSpeed = @PI / (500 + @random(1500))
-    name = "Planet #" + index
-    new Planet(@, x, y, size, rotationSpeed, name)
+    name = game.name
+
+    new Planet(@, x, y, size, rotationSpeed, name, game)
 
   @setupMouseWheel = =>
     me = this
@@ -73,7 +71,6 @@ sketch ->
       canvasDiv.attachEvent('onmousewheel', invokeMouseWheelFunction)                  # IE
 
   @mouseWheel = (direction) =>
-    scaleBefore = @scaleLevel
     if direction > 0 
       if @scaleLevel > 2.4
         return
@@ -82,14 +79,6 @@ sketch ->
       if @scaleLevel < 0.2
         return
       @scaleLevel -= 0.1
-
-    halfWidth  = @width/2
-    halfHeight = @height/2
-
-    @translateX = halfWidth / @scaleLevel
-    @translateY = halfHeight / @scaleLevel
-    #@translateX = (halfWidth - @mouseX / 2) / @scaleLevel
-    #@translateY = (halfHeight - @mouseY / 2) / @scaleLevel
 
   @mouseClicked = =>
     if @zoom
@@ -100,10 +89,35 @@ sketch ->
 
     for p in @planets
       if @isMouseOverPlanet(p)
+        p.clicked = true
         @zoomedPlanet = p
         @zoom = true
         @zoomCount = 0
-        $('#game-description').html(p.text)
+        info = p.gameinfo
+        $('#title').html(info.name)
+        $('#year').html(info.year)
+        $('#short-description').html(info.description.short)
+        $('#long-description').html(info.description.long)
+
+        if info.resources.pictures? and info.resources.pictures.picture?
+          slider.setPhotos(info.resources.pictures.picture)
+          slider.slide(0)
+
+        if info.resources.videos?
+          videos = info.resources.videos
+          if videos.video?
+            $('#video').html('<p><b style="border: 1px dashed gray;">See <a target="_blank" href="http://vimeo.com/' + videos.video.vimeo_id + '">video</a></b></p>')
+            $('#video').videopopup({
+              'videoid' : videos.video.vimeo_id,
+              'videoplayer' : 'vimeo',
+              'autoplay' : 'true',
+              'width' : '900',
+              'height' : '600'
+            })
+          else if videos.video_show_case?
+            $('#video').html('<p><b style="border: 1px dashed gray;">See <a target="_blank" href="http://vimeo.com/album/' + videos.video_show_case.vimeo_album_id + '">video</a></b></p>')
+            $('#video').unbind()
+
         break
 
   @mouseOut = =>
@@ -128,15 +142,16 @@ sketch ->
       @fill(250)
 
     if @zoom or @zoomCount > 0
-      @pushMatrix()  
+      @pushMatrix()
 
       if @zoom and @zoomCount < @zoomMax
         @zoomCount++
       else if !@zoom and @zoomCount > 0
         @zoomCount--
       else
-        $('#game-info').show("slow") # TODO: Don't show this all the time
-        $('#planet-info').hide("fast")
+        if not $('#game-info').is(":visible")
+          $('#game-info').show("slow")
+          $('#planet-info').hide("fast")
 
       zoomValue = @zoomCount / @zoomMax
       textOutsideRadius = (@zoomedPlanet.size / 2) + 100
@@ -152,7 +167,9 @@ sketch ->
       translateY = @translateY - (@translateY + @zoomedPlanet.y - halfHeight/scaleMax - 20) * zoomValue
       @translate translateX, translateY
     else
+      #@translate @width/2, @height/2
       @scale @scaleLevel
+      #@translate -@width/2, -@height/2
       @translate @translateX, @translateY
 
     @fill 255
@@ -168,8 +185,6 @@ sketch ->
       @fill(255, fadeValue)
       @rect(-5000, -5000, 10000, 10000)
       @zoomedPlanet.draw()
-    
-    if @zoom
       arcText(@zoomedPlanet.name, @zoomedPlanet)
       @popMatrix()
     else
@@ -181,7 +196,11 @@ sketch ->
           break
   
   @isMouseOverPlanet = (planet) ->
-    @dist(planet.x, planet.y, (@mouseX / @scaleLevel) - @translateX, (@mouseY / @scaleLevel) - @translateY) <= (planet.size / 2)
+    #x = (@mouseX - @translateX) * (1 / @scaleLevel)
+    #y = (@mouseY - @translateY) * (1 / @scaleLevel)
+    x = (@mouseX / @scaleLevel) - @translateX
+    y = (@mouseY / @scaleLevel) - @translateY
+    @dist(planet.x, planet.y, x, y) <= (planet.size / 2)
 
   @mousePressed = ->
     @mouseDragStartX = @mouseX

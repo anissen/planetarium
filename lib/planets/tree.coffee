@@ -19,6 +19,8 @@ class Tree
     @pjs.rotate(@pjs.PI/2)
     
     @pjs.stroke(0)
+    if (@planet.clicked)
+      @pjs.stroke 60, 20, 0
     @pjs.strokeWeight(gh/5)
 
     @pjs.line(0, 0, 0, -gh)
