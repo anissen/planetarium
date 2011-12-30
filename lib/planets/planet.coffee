@@ -4,6 +4,7 @@ class Planet
     @objects = []
     @clouds = []
     @teraformed = false
+    @clicked = false
      
   turn: ->
     @a += @turnSpeed
@@ -39,7 +40,13 @@ class Planet
 
     @pjs.rotate(@a)
     @pjs.noStroke()
-    @pjs.fill(0)    
+    @pjs.fill 0
+    if @clicked
+      @pjs.fill 0, 30, 200, 20
+      @pjs.ellipse(0, 0, 100 + @size * 1.2, 100 + @size * 1.2)
+      @pjs.fill 0, 40, 0
+    #if @teraformed
+    #  @pjs.fill 0, 70, 30
     @pjs.ellipse(0, 0, @size, @size)
     for c in @clouds
       c.draw()

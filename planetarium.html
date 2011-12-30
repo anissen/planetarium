@@ -16,6 +16,9 @@
   <script type="text/javascript" src="lib/sliderjs/slider.js"></script>
   <link href="lib/sliderjs/slider.min.css" rel="stylesheet" type="text/css" />
 
+  <script type="text/javascript" src="lib/videopopup/videopopup.min.js"></script>
+  <link href="lib/videopopup/videopopup.css" rel="stylesheet" type="text/css" />
+
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -45,6 +48,7 @@
             <h2>About</h2>
             <b><span id="title"></span> (<span id="year"></span>)</b>
             <div id="short-description" class="short-desc"></div>
+            <div id="video"></div>
             <p id="long-description"></p>
           </article>
         </div>
@@ -79,7 +83,7 @@
   <script type="text/javascript">
   $(function(){
     slider = new Slider("#slider").setDuration(5000);
-    slider.setSize(500, 450);
+    slider.setSize(500, 400);
     slider.setTheme('theme-light');
     
     var transition = 'circles';

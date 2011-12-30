@@ -29,7 +29,9 @@ class Bush
     @pjs.translate(0 , -gh / 10)
 
     @pjs.noStroke()
-    @pjs.fill(0)
+    @pjs.fill 0
+    if (@planet.clicked)
+        @pjs.fill 30, 10, 0
     for ball in @balls
       @pjs.ellipse(ball.x * n, ball.y * n / 2,  ball.xsize * (n - 2), ball.ysize * (n - 2))
     

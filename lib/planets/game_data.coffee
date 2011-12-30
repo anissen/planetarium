@@ -10,6 +10,11 @@ games = {
           "long": "The Flying Carpet game was made for the course '3D Prototyping' on the IT programme at the University of Aarhus. Its purpose was to provide a simple game that could be controlled by a physical controller device using sensors attached to an Arduino board. <p>See <a href='https://sites.google.com/site/flyingcarpetsim/'>project website</a></p>"
         },
         "resources": {
+          "videos": {
+            "video": {
+              "vimeo_id": "16502098"
+            }
+          },
           "pictures": {
             "picture": [
               {
@@ -81,29 +86,29 @@ games = {
         },
         "resources": {
           "videos": {
-            "video_video": {
-              "vimeo_album_id": "xxx"
+            "video": {
+              "vimeo_id": "8399833"
             }
           },
           "pictures": {
             "picture": [
               {
-                "src": "projects/motivation/motivation1.png",
+                "src": "projects/motivation/motivation1.jpg",
                 "name": "Overview of world"
               }, {
-                "src": "projects/motivation/motivation2.png",
+                "src": "projects/motivation/motivation2.jpg",
                 "name": "Slugs"
               }, {
-                "src": "projects/motivation/motivation3.png",
+                "src": "projects/motivation/motivation3.jpg",
                 "name": "Slugs"
               }, {
-                "src": "projects/motivation/motivation4.png",
+                "src": "projects/motivation/motivation4.jpg",
                 "name": "Resting area"
               }, {
-                "src": "projects/motivation/motivation5.png",
+                "src": "projects/motivation/motivation5.jpg",
                 "name": "Slug path finding"
               }, {
-                "src": "projects/motivation/motivation6.png",
+                "src": "projects/motivation/motivation6.jpg",
                 "name": "Multitude of slugs with good genes"
               }
             ]
@@ -521,6 +526,14 @@ games = {
           "dir": "amis",
           "videos": {
             "video": { "vimeo_id": "8301381" }
+          },
+          "pictures": {
+            "picture": [
+              {
+                "src": "projects/none/logo.jpg",
+                "name": "No screenshots"
+              }
+            ]
           }
         }
       }

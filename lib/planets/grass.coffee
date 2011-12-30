@@ -7,6 +7,10 @@ class Grass
     @age += @growthRate
     gh = @pjs.min(@age, @h)
 
+    @pjs.stroke 0
+    if (@planet.clicked)
+      @pjs.stroke 20, 50, 0
+
     for i in [1..5]
       @pjs.pushMatrix()
       @pjs.rotate(@posA + i * 2)

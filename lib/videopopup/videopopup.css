@@ -1,0 +1,46 @@
+/*
+ * jQuery Video Popup Plugin Stylesheet
+ * Version: 1.0
+ *
+ * Author: Nick Rivers
+ * http://nrivers.com
+ *
+ *
+ * Changelog: 
+ * Version: 1.0
+ *
+ */
+
+#dvGlobalMask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1100;
+	background-color:#3F3F3F;
+}
+
+#videopopup {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 5px 5px 20px #000000;
+    display: none;
+    padding-bottom: 5px;
+	position: absolute;
+    z-index: 9001;
+	border: 15px solid #fff;
+	position:relative;
+}
+
+.modalnav {
+    cursor: pointer;
+    height: 30px;
+	width: 30px;
+	position:absolute;
+	right:-25px;
+	top:-25px;
+	background: url("modal-nav-hover.png") -40px 0px;
+}
+
+.modalnav:hover {
+    background: url("modal-nav-hover.png") -40px 0px;
+}

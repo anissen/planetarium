@@ -71,7 +71,6 @@ sketch ->
       canvasDiv.attachEvent('onmousewheel', invokeMouseWheelFunction)                  # IE
 
   @mouseWheel = (direction) =>
-    scaleBefore = @scaleLevel
     if direction > 0 
       if @scaleLevel > 2.4
         return
@@ -80,14 +79,6 @@ sketch ->
       if @scaleLevel < 0.2
         return
       @scaleLevel -= 0.1
-
-    halfWidth  = @width/2
-    halfHeight = @height/2
-
-    @translateX = halfWidth / @scaleLevel
-    @translateY = halfHeight / @scaleLevel
-    #@translateX = (halfWidth - @mouseX / 2) / @scaleLevel
-    #@translateY = (halfHeight - @mouseY / 2) / @scaleLevel
 
   @mouseClicked = =>
     if @zoom
@@ -98,6 +89,7 @@ sketch ->
 
     for p in @planets
       if @isMouseOverPlanet(p)
+        p.clicked = true
         @zoomedPlanet = p
         @zoom = true
         @zoomCount = 0
@@ -110,6 +102,22 @@ sketch ->
         if info.resources.pictures? and info.resources.pictures.picture?
           slider.setPhotos(info.resources.pictures.picture)
           slider.slide(0)
+
+        if info.resources.videos?
+          videos = info.resources.videos
+          if videos.video?
+            $('#video').html('<p><b style="border: 1px dashed gray;">See <a target="_blank" href="http://vimeo.com/' + videos.video.vimeo_id + '">video</a></b></p>')
+            $('#video').videopopup({
+              'videoid' : videos.video.vimeo_id,
+              'videoplayer' : 'vimeo',
+              'autoplay' : 'true',
+              'width' : '900',
+              'height' : '600'
+            })
+          else if videos.video_show_case?
+            $('#video').html('<p><b style="border: 1px dashed gray;">See <a target="_blank" href="http://vimeo.com/album/' + videos.video_show_case.vimeo_album_id + '">video</a></b></p>')
+            $('#video').unbind()
+
         break
 
   @mouseOut = =>
@@ -134,15 +142,16 @@ sketch ->
       @fill(250)
 
     if @zoom or @zoomCount > 0
-      @pushMatrix()  
+      @pushMatrix()
 
       if @zoom and @zoomCount < @zoomMax
         @zoomCount++
       else if !@zoom and @zoomCount > 0
         @zoomCount--
       else
-        $('#game-info').show("slow") # TODO: Don't show this all the time
-        $('#planet-info').hide("fast")
+        if not $('#game-info').is(":visible")
+          $('#game-info').show("slow")
+          $('#planet-info').hide("fast")
 
       zoomValue = @zoomCount / @zoomMax
       textOutsideRadius = (@zoomedPlanet.size / 2) + 100
@@ -158,7 +167,9 @@ sketch ->
       translateY = @translateY - (@translateY + @zoomedPlanet.y - halfHeight/scaleMax - 20) * zoomValue
       @translate translateX, translateY
     else
+      #@translate @width/2, @height/2
       @scale @scaleLevel
+      #@translate -@width/2, -@height/2
       @translate @translateX, @translateY
 
     @fill 255
@@ -174,8 +185,6 @@ sketch ->
       @fill(255, fadeValue)
       @rect(-5000, -5000, 10000, 10000)
       @zoomedPlanet.draw()
-    
-    if @zoom
       arcText(@zoomedPlanet.name, @zoomedPlanet)
       @popMatrix()
     else
@@ -187,7 +196,11 @@ sketch ->
           break
   
   @isMouseOverPlanet = (planet) ->
-    @dist(planet.x, planet.y, (@mouseX / @scaleLevel) - @translateX, (@mouseY / @scaleLevel) - @translateY) <= (planet.size / 2)
+    #x = (@mouseX - @translateX) * (1 / @scaleLevel)
+    #y = (@mouseY - @translateY) * (1 / @scaleLevel)
+    x = (@mouseX / @scaleLevel) - @translateX
+    y = (@mouseY / @scaleLevel) - @translateY
+    @dist(planet.x, planet.y, x, y) <= (planet.size / 2)
 
   @mousePressed = ->
     @mouseDragStartX = @mouseX
