@@ -102,7 +102,8 @@ sketch ->
         if info.resources.pictures? and info.resources.pictures.picture?
           slider.setPhotos(info.resources.pictures.picture)
           slider.slide(0)
-
+        
+        $('#video').html('')
         if info.resources.videos?
           videos = info.resources.videos
           if videos.video?
