@@ -1,6 +1,6 @@
 sketch ->
   @setup = =>
-    @size(940, 450)
+    @size(940, 400)
     @frameRate(30)
     @smooth()
 

@@ -57,9 +57,9 @@
               <div id="info-content">
                 <article id="content">
                   <h2>About</h2>
-                  <b><span id="title"></span> (<span id="year"></span>)</b>
-                  <div id="short-description" class="short-desc"></div>
-                  <div id="video"></div>
+                  <p><b><span id="title"></span> (<span id="year"></span>)</b></p>
+                  <p id="short-description" class="short-desc"></p>
+                  <p id="video"></p>
                   <p id="long-description" class="two-columns"></p>
                 </article>
               </div>
@@ -137,7 +137,7 @@
   <script type="text/javascript">
   $(function(){
     slider = new Slider("#slider").setDuration(5000);
-    slider.setSize(540, 400);
+    slider.setSize(500, 400);
     slider.setTheme('theme-light');
 
     var transition = 'circles';

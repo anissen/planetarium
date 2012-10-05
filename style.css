@@ -11,3 +11,7 @@ canvas:focus {
 .well-white {
     background-color: white;
 }
+
+body {
+    background: url('images/bg-white.png') repeat;
+}
