@@ -1,6 +1,6 @@
 sketch ->
   @setup = =>
-    @size(1000, 400)
+    @size(940, 400)
     @frameRate(30)
     @smooth()
 
@@ -20,7 +20,7 @@ sketch ->
     @translateY = 400/2
 
     @starfield = new Starfield(@, 2000, 1000, 1000)
-    
+
     @planets = []
 
     for game in games.projects.project
@@ -55,11 +55,11 @@ sketch ->
       if (!evt)
         evt = event
       if evt.detail < 0
-        1 
-      else 
+        1
+      else
         if evt.wheelDelta > 0
-          1 
-        else 
+          1
+        else
           -1
 
     canvasDiv = document.getElementById('canvas')
@@ -71,11 +71,11 @@ sketch ->
       canvasDiv.attachEvent('onmousewheel', invokeMouseWheelFunction)                  # IE
 
   @mouseWheel = (direction) =>
-    if direction > 0 
+    if direction > 0
       if @scaleLevel > 2.4
         return
-      @scaleLevel += 0.1 
-    else 
+      @scaleLevel += 0.1
+    else
       if @scaleLevel < 0.2
         return
       @scaleLevel -= 0.1
@@ -102,7 +102,7 @@ sketch ->
         if info.resources.pictures? and info.resources.pictures.picture?
           slider.setPhotos(info.resources.pictures.picture)
           slider.slide(0)
-        
+
         $('#video').html('')
         if info.resources.videos?
           videos = info.resources.videos
@@ -157,7 +157,7 @@ sketch ->
       zoomValue = @zoomCount / @zoomMax
       textOutsideRadius = (@zoomedPlanet.size / 2) + 100
       scaleMax = 1/(textOutsideRadius/240) # 420 fits the planet, trees and text, 700 fits the planet only
-      
+
       halfWidth  = @width/2
       halfHeight = @height/2
 
@@ -195,7 +195,7 @@ sketch ->
           if not p.teraformed
             p.teraform()
           break
-  
+
   @isMouseOverPlanet = (planet) ->
     #x = (@mouseX - @translateX) * (1 / @scaleLevel)
     #y = (@mouseY - @translateY) * (1 / @scaleLevel)

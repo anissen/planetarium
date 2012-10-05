@@ -1,108 +1,17 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  color: black;
-  /*font-family: Lucida Grande, sans-serif;*/
-  /*font-family: 'Tangerine', serif;*/
-  font-family: normal Georgia, 'Times New Roman', Times, serif;
-  font-size: 22px;
-}
 
-html {
-  background-color: white;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  /* font-family: Georgia; */
-  text-shadow: 2px 2px 2px #aaa;
-  font-weight: normal;
-  color: black;
-}
-
-h1 {font-size: 48px}
-h2 {font-size: 42px}
-h3 {font-size: 38px}
-h4 {font-size: 34px}
-
-#info {
-  width: 1020px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 0px solid red;
-}
-
-#info-content {
-  width: 460px;
-  margin-left: 530px;
-  border: 0px solid green;
-}
-
-header {
-  padding: 0;
-  height: 70px;
-}
-
-header h1 {
-  margin-top: 0px;
-  padding: 0;
-  /*font-size: 72px;*/ /*48px;*/
-  font: 4em;
-
-  /*
-  float: left;
-  margin-left: -200px;
-  */
-}
-
-header .subheading {
-  font: 2em;
-  margin-top: -64px;
-  margin-left: 250px;
-}
-
-header a {text-decoration: none; margin: 0}
-
-a {color: black; }
-a:hover {color: gray}
-
-ul {padding-left: 5px}
-
-#images {
-  width: 510px;
-  height: 300px;
-  margin-left: 0px;
-  background-color: #eef;
-  float: left;
-}
 
 canvas {
-  margin: 0px auto;
-  /*display: block;*/
+  margin: 0 auto;
 }
 
-canvas:focus { 
+canvas:focus {
   outline: none;
 }
 
-ul {
-  padding: 0px;
-  margin: 10px;
+.well-white {
+    background-color: white;
 }
 
-li {
-  margin-left: 30px;
-}
-
-.box {width: 1000px; margin: 0px auto;  padding: 5px;}
-
-#shadow { 
-  border: 1px solid #f0f0f0;
-  border-bottom: 2px solid #ccc;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px; 
-}
-
-.short-desc {
-  font-style: italic;
+body {
+    background: url('images/bg-white.png') repeat;
 }
