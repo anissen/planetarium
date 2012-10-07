@@ -1,78 +1,151 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
+  <meta charset="utf-8">
+  <title>Planetarium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <title>anissen/planetarium @ GitHub</title>
+  <link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #000000; }
-    h3 { text-align: center; color: #000000; }
-    a { color: #000000; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+  <link href="lib/sliderjs/slider.min.css" rel="stylesheet" type="text/css" />
+  <link href="lib/videopopup/videopopup.css" rel="stylesheet" type="text/css" />
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <a href="https://github.com/anissen/planetarium"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  <div class="container">
 
-  <div id="container">
+      <h1>Planetarium <small>An interactive game portfolio</small></h1>
 
-    <div class="download">
-      <a href="https://github.com/anissen/planetarium/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/anissen/planetarium/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+      <div class="row">
+        <div class="span12 well well-small well-white">
 
-    <h1><a href="https://github.com/anissen/planetarium">planetarium</a>
-      <span class="small">by <a href="https://github.com/anissen">anissen</a></span></h1>
+          <div id="canvas-container" style="display: none;"></div>
+          <div id="planet-info" style="display: none;">
+            <ul>
+              <li>Click on a planet to get information</li>
+              <li>Drag to move around</li>
+              <li>Use mousewheel to zoom</li>
+            </ul>
+          </div>
 
-    <div class="description">
-      My (somewhat alternative) game portfolio.
-    </div>
-    
-    <h2>Planetarium</h2>
-    <p>
-      Go to the <a href="planetarium.html">planetarium</a>.
-    </p><br/>
+        </div>
+      </div>
 
-    <h2>Authors</h2>
-    <p>Anders Nissen (andnis@gmail.com)</p><br/>
+      <div class="row">
+        <div class="span12 well well-small well-white">
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/anissen/planetarium/zipball/master">zip</a> or
-      <a href="https://github.com/anissen/planetarium/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/anissen/planetarium</pre>
-    </p>
+          <div class="row">
+            <div class="span7">
 
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/anissen/planetarium">anissen/planetarium</a>
-    </div>
+              <div id="images">
+                <div id="slider"></div>
+              </div>
+
+            </div>
+
+            <div class="span5">
+
+              <div id="info-content">
+                <article id="content">
+                  <h2>About</h2>
+                  <p><b><span id="title"></span> (<span id="year"></span>)</b></p>
+                  <p id="short-description" class="short-desc"></p>
+                  <p id="video"></p>
+                  <p id="long-description" class="two-columns"></p>
+                </article>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
 
   </div>
 
+  <!--
+    <div id="info">
+
+      <div id="shadow" class="box">
+        <div id="canvas-container" style="display: none;"></div>
+        <div id="planet-info" style="display: none;">
+          <ul>
+            <li>Click on a planet to get information</li>
+            <li>Drag to move around</li>
+            <li>Use mousewheel to zoom</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="game-info" style="display: none;">
+
+        <div id="info-content">
+          <article id="content">
+            <h2>About</h2>
+            <b><span id="title"></span> (<span id="year"></span>)</b>
+            <div id="short-description" class="short-desc"></div>
+            <div id="video"></div>
+            <p id="long-description"></p>
+          </article>
+        </div>
+      </div>
+  </div>
+  -->
+
+  <script type="text/javascript">
+  window.sketch = function (func) {
+    var canvas = document.createElement('canvas');
+    canvas.id = 'canvas';
+
+    $('#canvas-container').append(canvas);
+    new Processing(canvas, function (processing) { func.call(processing); });
+
+    $('#canvas-container').fadeIn("slow");
+    $('#shadow').bind("mouseenter", function() { $('#planet-info').show("fast"); });
+    $('#shadow').bind("mouseleave", function() { $('#planet-info').hide("fast"); });
+  }
+  var slider = null;
+  </script>
+
+  <!-- Vendor libraries -->
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/processing.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/sliderjs/slider.js"></script>
+  <script src="lib/videopopup/videopopup.min.js"></script>
+
+  <!-- Planetarium scripts -->
+  <script src="lib/planets/tree.js"></script>
+  <script src="lib/planets/planet.js"></script>
+  <script src="lib/planets/grass.js"></script>
+  <script src="lib/planets/bush.js"></script>
+  <script src="lib/planets/cloud.js"></script>
+  <script src="lib/planets/starfield.js"></script>
+  <script src="lib/planets/text_utils.js"></script>
+  <script src="lib/planets/game_data.js"></script>
+  <script src="lib/planets/planetarium.js"></script>
+
+  <script type="text/javascript">
+  $(function(){
+    slider = new Slider("#slider").setDuration(5000);
+    slider.setSize(500, 400);
+    slider.setTheme('theme-light');
+
+    var transition = 'circles';
+    if(SliderTransitionFunctions[transition])
+      slider.setTransitionFunction(SliderTransitionFunctions[transition])
+    else slider.setTransition(transition);
+  });
+  </script>
 </body>
+
 </html>

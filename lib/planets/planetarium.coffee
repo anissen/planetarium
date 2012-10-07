@@ -9,7 +9,7 @@ sketch ->
     @zoomedPlanet = null
     @zoom = false
 
-    @scaleLevel = 1
+    @scaleLevel = 0.8
 
     @scrollbarWidth = 70
     @scrollSpeed = 10
