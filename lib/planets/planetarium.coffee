@@ -83,7 +83,8 @@ sketch ->
   @mouseClicked = =>
     if @zoom
       @zoom = false
-      $('#planet-info').show("fast")
+      #$('#planet-info').slideDown("fast")
+      $('#canvas-container[rel="popover"]').popover('show')
       $('#game-info').hide("slow")
       return
 
@@ -107,7 +108,7 @@ sketch ->
         if info.resources.videos?
           videos = info.resources.videos
           if videos.video?
-            $('#video').html('<p><b style="border: 1px dashed gray;">See <a target="_blank" href="http://vimeo.com/' + videos.video.vimeo_id + '">video</a></b></p>')
+            $('#video').html('See <a target="_blank" href="http://vimeo.com/' + videos.video.vimeo_id + '">video</a>')
             $('#video').videopopup({
               'videoid' : videos.video.vimeo_id,
               'videoplayer' : 'vimeo',
@@ -116,7 +117,7 @@ sketch ->
               'height' : '600'
             })
           else if videos.video_show_case?
-            $('#video').html('<p><b style="border: 1px dashed gray;">See <a target="_blank" href="http://vimeo.com/album/' + videos.video_show_case.vimeo_album_id + '">video</a></b></p>')
+            $('#video').html('See <a target="_blank" href="http://vimeo.com/album/' + videos.video_show_case.vimeo_album_id + '">video</a>')
             $('#video').unbind()
 
         break
@@ -152,7 +153,8 @@ sketch ->
       else
         if not $('#game-info').is(":visible")
           $('#game-info').show("slow")
-          $('#planet-info').hide("fast")
+          #$('#planet-info').hide("fast")
+          $('#canvas-container[rel="popover"]').popover('hide')
 
       zoomValue = @zoomCount / @zoomMax
       textOutsideRadius = (@zoomedPlanet.size / 2) + 100

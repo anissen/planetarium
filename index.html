@@ -27,23 +27,19 @@
 
       <div class="row">
         <div class="span12 well well-small well-white">
-
-          <div id="canvas-container" style="display: none;"></div>
-          <div id="planet-info" style="display: none;">
-            <ul>
-              <li>Click on a planet to get information</li>
+          <div id="canvas-container" style="display: none;" rel="popover" data-content="<ul>
+              <li>Click planets to get information</li>
               <li>Drag to move around</li>
               <li>Use mousewheel to zoom</li>
-            </ul>
-          </div>
-
+            </ul>" data-original-title="Instructions"></div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row hide" id="game-info">
         <div class="span12 well well-small well-white">
 
           <div class="row">
+
             <div class="span7">
 
               <div id="images">
@@ -55,13 +51,10 @@
             <div class="span5">
 
               <div id="info-content">
-                <article id="content">
-                  <h2>About</h2>
-                  <p><b><span id="title"></span> (<span id="year"></span>)</b></p>
-                  <p id="short-description" class="short-desc"></p>
-                  <p id="video"></p>
-                  <p id="long-description" class="two-columns"></p>
-                </article>
+                <h2><span id="title"></span> (<span id="year"></span>)</h2>
+                <p id="short-description" class="short-desc"></p>
+                <p id="video"></p>
+                <p id="long-description" class="two-columns"></p>
               </div>
 
             </div>
@@ -70,36 +63,12 @@
         </div>
       </div>
 
+    <footer>
+      <p class="pull-left"><a href="http://andersnissen.com" class="text-info">Back</a></p>
+      <p class="pull-right muted">Anders Nissen 2012</p>
+    </footer>
+
   </div>
-
-  <!--
-    <div id="info">
-
-      <div id="shadow" class="box">
-        <div id="canvas-container" style="display: none;"></div>
-        <div id="planet-info" style="display: none;">
-          <ul>
-            <li>Click on a planet to get information</li>
-            <li>Drag to move around</li>
-            <li>Use mousewheel to zoom</li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="game-info" style="display: none;">
-
-        <div id="info-content">
-          <article id="content">
-            <h2>About</h2>
-            <b><span id="title"></span> (<span id="year"></span>)</b>
-            <div id="short-description" class="short-desc"></div>
-            <div id="video"></div>
-            <p id="long-description"></p>
-          </article>
-        </div>
-      </div>
-  </div>
-  -->
 
   <script type="text/javascript">
   window.sketch = function (func) {
@@ -109,10 +78,14 @@
     $('#canvas-container').append(canvas);
     new Processing(canvas, function (processing) { func.call(processing); });
 
+    var $popover = $('#canvas-container[rel="popover"]');
+    $popover.popover({trigger: 'hover', placement: 'bottom'});
     $('#canvas-container').fadeIn("slow");
-    $('#shadow').bind("mouseenter", function() { $('#planet-info').show("fast"); });
-    $('#shadow').bind("mouseleave", function() { $('#planet-info').hide("fast"); });
+    $('#shadow')
+      .on("mouseenter", function() { $popover.popover('show'); })
+      .on("mouseleave", function() { $popover.popover('hide'); });
   }
+
   var slider = null;
   </script>
 

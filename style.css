@@ -8,6 +8,14 @@ canvas:focus {
   outline: none;
 }
 
+.short-desc {
+    font-style: italic;
+}
+
+#video {
+    font-weight: bold;
+}
+
 .well-white {
     background-color: white;
 }
