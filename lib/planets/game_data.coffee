@@ -3,11 +3,55 @@ games = {
   "projects": {
     "project": [
       {
+        "name": "Merry Christmas",
+        "year": "2012",
+        "description": {
+          "short": "An interactive Christmas card",
+          "long": "<p>A Christmas card that uses verlet integration physics to simulate strings of characters.</p><p>See <a href='http://andersnissen.com/jul/'>project website</a></p><p><a href='https://github.com/anissen/anissen.github.com/tree/master/jul'>Source code</a></p>"
+        },
+        "resources": {
+          "pictures": {
+            "picture": [
+              {
+                "src": "projects/merrychristmas/godjul.png",
+                "name": "Strings of characters"
+              },
+              {
+                "src": "projects/merrychristmas/godjul-2.png",
+                "name": "Remaining characters after shaking the scene"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Funny Bones",
+        "year": "2012",
+        "description": {
+          "short": "Web-based rigid body viewer/editor",
+          "long": "<p>Web-based rigid body physics simulator using three.js and verlet integartion.</p><p>See <a href='http://andersnissen.com/funny-bones/app/index-simple.html'>project website</a></p><p><a href='https://github.com/anissen/funny-bones'>Source code</a></p>"
+        },
+        "resources": {
+          "pictures": {
+            "picture": [
+              {
+                "src": "projects/funnybones/funny-bones.png",
+                "name": "Hitman 47 bone model"
+              },
+              {
+                "src": "projects/funnybones/funny-bones-2.png",
+                "name": "Bridge model"
+              }
+            ]
+          }
+        }
+      },
+      {
         "name": "Flying Carpet",
         "year": "2010",
         "description": {
           "short": "Simple Arduino controlled game",
-          "long": "The Flying Carpet game was made for the course '3D Prototyping' on the IT programme at the University of Aarhus. Its purpose was to provide a simple game that could be controlled by a physical controller device using sensors attached to an Arduino board. <p>See <a href='https://sites.google.com/site/flyingcarpetsim/'>project website</a></p>"
+          "long": "<p>The Flying Carpet game was made for the course '3D Prototyping' on the IT programme at the University of Aarhus. Its purpose was to provide a simple game that could be controlled by a physical controller device using sensors attached to an Arduino board.</p><p>See <a href='https://sites.google.com/site/flyingcarpetsim/'>project website</a></p>"
         },
         "resources": {
           "videos": {
@@ -30,7 +74,7 @@ games = {
         "year": "2010",
         "description": {
           "short": "Tool for designing behavior for agents in games",
-          "long": "The 'Behavior Tree Workbench' was my thesis project. The purpose of the workbench is to make it easy and intuitive to design behavior of agents in computer games. <p>See <a href='https://sites.google.com/site/behaviortreeeditor'>project website</a></p>"
+          "long": "<p>The 'Behavior Tree Workbench' was my thesis project. The purpose of the workbench is to make it easy and intuitive to design behavior of agents in computer games.</p><p>See <a href='https://sites.google.com/site/behaviortreeeditor'>project website</a></p>"
         },
         "resources": {
           "pictures": {
@@ -64,7 +108,7 @@ games = {
         "year": "2009",
         "description": {
           "short": "Peer-to-peer online game",
-          "long": "An online game without any central component where all game state is distributed across the participating players. In the game you are a camel and can chat with other camels as well as dropping and picking up pieces of poo."
+          "long": "<p>An online game without any central component where all game state is distributed across the participating players. In the game you are a camel and can chat with other camels as well as dropping and picking up pieces of poo.</p>"
         },
         "resources": {
           "pictures": {
@@ -82,7 +126,7 @@ games = {
         "year": "2009",
         "description": {
           "short": "Evolution simulation",
-          "long": "Experiment using genetics and motivation-based behavior to simulate evolution. <p>See <a href='htt//daimi.au.dk/~anissen/motivation'>project website</a></p>"
+          "long": "<p>Experiment using genetics and motivation-based behavior to simulate evolution.</p><p>See <a href='htt//daimi.au.dk/~anissen/motivation'>project website</a></p>"
         },
         "resources": {
           "videos": {
@@ -120,7 +164,7 @@ games = {
         "year": "2009",
         "description": {
           "short": "3D offline smoke simulation",
-          "long": "Using fluid dynamics (Euler equations) to calculate the displacement of smoke based on density, buoyancy, wind, gravity, etc.."
+          "long": "<p>Using fluid dynamics (Euler equations) to calculate the displacement of smoke based on density, buoyancy, wind, gravity, etc..</p>"
         },
         "resources": {
           "videos": {
@@ -150,7 +194,7 @@ games = {
         "year": "2009",
         "description": {
           "short": "3D dungeon game prototype",
-          "long": "Prototype of a game inspired by Dungeon Keeper where imps carry out orders of their master to maintain an underground dungeon. The dungeon are 3-dimensional and can have multiple levels that the imps nagivate using an A* path finding algorithm."
+          "long": "<p>Prototype of a game inspired by Dungeon Keeper where imps carry out orders of their master to maintain an underground dungeon. The dungeon are 3-dimensional and can have multiple levels that the imps nagivate using an A* path finding algorithm.</p>"
         },
         "resources": {
           "pictures": {
@@ -177,7 +221,7 @@ games = {
         "year": "2008",
         "description": {
           "short": "Behavior Tree technique for AI",
-          "long": "A demonstration of implementing AI as a Behavior Tree. Behavior trees are used for modelling the daily life of a village of dwarfs."
+          "long": "<p>A demonstration of implementing AI as a Behavior Tree. Behavior trees are used for modelling the daily life of a village of dwarfs.</p>"
         },
         "resources": {
           "pictures": {
@@ -201,7 +245,7 @@ games = {
         "year": "2008",
         "description": {
           "short": "3D tank multiplayer tank gang using OpenEngine",
-          "long": "A collaborative game for demonstrating OpenEngine while adding writing game specific libraries for the engine. The game is a multiplayer tank game where players race around on floating islands, gathering pick-ups and blasting enemies into pierces. <p>See <a href='http://www.openengine.dk'>www.openengine.dk</a><p>"
+          "long": "<p>A collaborative game for demonstrating OpenEngine while adding writing game specific libraries for the engine. The game is a multiplayer tank game where players race around on floating islands, gathering pick-ups and blasting enemies into pierces.</p><p>See <a href='http://www.openengine.dk'>www.openengine.dk</a></p>"
         },
         "resources": {
           "dir": "beatentraxx",
@@ -239,7 +283,7 @@ games = {
         "year": "2007",
         "description": {
           "short": "Modular cross-platform 3D framework",
-          "long": "OpenEngine is a collaborative effort for creating a truely general-purpose cross-platform game engine. The engine began as an engine stub for a game development course at university, but a dedicated group of students continued its development after the course. <p>See <a href='http://www.openengine.dk'>www.openengine.dk</a><p>"
+          "long": "<p>OpenEngine is a collaborative effort for creating a truely general-purpose cross-platform game engine. The engine began as an engine stub for a game development course at university, but a dedicated group of students continued its development after the course.</p><p>See <a href='http://www.openengine.dk'>www.openengine.dk</a><p>"
         },
         "resources": {
           "dir": "openengine",
@@ -262,7 +306,7 @@ games = {
         "year": "2007",
         "description": {
           "short": "3D rigid body editor",
-          "long": "The Rigid Body Editor is a program for editing and simulating physical properties of rigid bodies. The editor allows the user to create particles in space and connect these using some kind of constraints to form bodies with the desired properties. A physics simulation can then be run to test the rigid bodies."
+          "long": "<p>The Rigid Body Editor is a program for editing and simulating physical properties of rigid bodies. The editor allows the user to create particles in space and connect these using some kind of constraints to form bodies with the desired properties. A physics simulation can then be run to test the rigid bodies.</p>"
         },
         "resources": {
           "dir": "rigidbodyeditor",
@@ -309,7 +353,7 @@ games = {
         "year": "2007",
         "description": {
           "short": "Demonstration of various special effects, especially particles",
-          "long": "Four pedestals stand at the center of a fenced-off site of a meteor crash. On top of each pedestal is one of the four elements; earth, wind, water and fire. These elements can be interacted with, picked up and combined with other elements to create different effects."
+          "long": "<p>Four pedestals stand at the center of a fenced-off site of a meteor crash. On top of each pedestal is one of the four elements; earth, wind, water and fire. These elements can be interacted with, picked up and combined with other elements to create different effects.</p>"
         },
         "resources": {
           "pictures": {
@@ -351,7 +395,7 @@ games = {
         "year": "2007",
         "description": {
           "short": "Demo of the Boids algorithm for 3D panorama cinemas",
-          "long": "We used the Boids algorithm to simulate flocks of mosquitoes. Each flock reacts to the other flocks depending on their relationship. Additionally, some tools can affect the behavior of the flocks, e.g. the bloddrop and the mosquito spray. This demo worked in the university 3D panorama cinema."
+          "long": "<p>We used the Boids algorithm to simulate flocks of mosquitoes. Each flock reacts to the other flocks depending on their relationship. Additionally, some tools can affect the behavior of the flocks, e.g. the bloddrop and the mosquito spray. This demo worked in the university 3D panorama cinema.</p>"
         },
         "resources": {
           "dir": "myg",
@@ -383,7 +427,7 @@ games = {
         "year": "2006",
         "description": {
           "short": "HeroQuest-like game framework",
-          "long": "QuestBoard makes it possible to create old-school tile-based board games such as HeroQuest."
+          "long": "<p>QuestBoard makes it possible to create old-school tile-based board games such as HeroQuest.</p>"
         },
         "resources": {
           "dir": "wikiadventure",
@@ -436,8 +480,7 @@ games = {
         "year": "2005",
         "description": {
           "short": "Wiki-based game framework",
-          "long": "An experimental adventure game framework based on the Wiki principles,
-      where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games. <p>See <a href='http://content.gpwiki.org/index.php/Community_Projects:WikiAdventure'>project page</a></p>"
+          "long": "<p>An experimental adventure game framework based on the Wiki principles, where everyone can edit, add and remove contents. The framework is geared toward classic point-and-click adventure games.</p><p>See <a href='http://content.gpwiki.org/index.php/Community_Projects:WikiAdventure'>project page</a></p>"
         },
         "resources": {
           "dir": "wikiadventure",
@@ -487,7 +530,7 @@ games = {
         "year": "2004",
         "description": {
           "short": "Fast-paced arcade shooter",
-          "long": "Action-packed arcade game in which you are responsible for shooting down meteors before they crash into the Earth. Features lots of different power-ups, a great sound-track and a very retro-feel. Complete game."
+          "long": "<p>Action-packed arcade game in which you are responsible for shooting down meteors before they crash into the Earth. Features lots of different power-ups, a great sound-track and a very retro-feel. Complete game.</p>"
         },
         "resources": {
           "pictures": {
@@ -520,7 +563,7 @@ games = {
         "year": "2004",
         "description": {
           "short": "Tactical game prototype",
-          "long": "Top-down tactical action game prototype inspired by the gameplay in games like Metal Gear Solid. It features path finding, field-of-view and an AI that patrols, hunts a spotted player and alerts other guards."
+          "long": "<p>Top-down tactical action game prototype inspired by the gameplay in games like Metal Gear Solid. It features path finding, field-of-view and an AI that patrols, hunts a spotted player and alerts other guards.</p>"
         },
         "resources": {
           "dir": "amis",
